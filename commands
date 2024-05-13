@@ -1,0 +1,27 @@
+sudo apt update
+sudo apt install python3-venv
+python3 -m venv myblogenv
+source myblogenv/bin/activate
+pip install -r requirements.txt
+deactivate
+
+# lets set an environment variable to the file that we want to be our application
+export FLASK_APP=flaskblog.py # on mac and linux
+set FLASK_APP=flaskblog.py # on windows
+
+# lets set another environment variable that allow our broswer to respond to code changes without restarting the flask server
+export FLASK_DEBUG=1
+
+# flask uses the jinja2 templating engine for writing templates
+# if I don't want to use environment variables I can add this line which runs the script directly.
+# when we use this line we dont need to run the script with flask run that uses the environment variables
+# we just use python flaskblog.py . note that when you shot down the terminal does environment variables 
+# are lost you need to reset them.
+if __name__ == '__main__':
+    app.run(debug=True)
+
+# This command below installs forms for user account creation and validation in flask
+pip install flask-wtf
+
+# lets install the email validator
+pip install email_validator
